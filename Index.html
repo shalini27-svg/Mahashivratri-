@@ -2,113 +2,124 @@
 <html>
 <head>
     <title>Happy Mahashivratri</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         body {
             margin: 0;
-            padding: 0;
-            text-align: center;
+            background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
             font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom, #000428, #004e92);
+        }
+
+        .card {
+            width: 95%;
+            max-width: 380px;
+            height: 90vh;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            text-align: center;
             color: white;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px gold;
         }
 
         h1 {
-            margin-top: 80px;
-            font-size: 45px;
-            color: #FFD700;
-        }
-
-        .shiv-text {
-            font-size: 40px;
-            font-weight: bold;
+            font-size: 28px;
             margin-top: 20px;
-            animation: glow 2s infinite alternate;
         }
 
-        @keyframes glow {
-            0% {
-                color: #ffffff;
-                text-shadow: 0 0 10px #fff, 0 0 20px #00e6ff;
-            }
-            100% {
-                color: #FFD700;
-                text-shadow: 0 0 20px #FFD700, 0 0 40px #ff9900;
-            }
+        .temple {
+            font-size: 45px;
+            margin: 10px 0;
         }
 
-        .box {
-            background: rgba(255, 255, 255, 0.1);
-            margin: 30px;
-            padding: 30px;
-            border-radius: 20px;
-        }
-
-        p {
-            font-size: 20px;
-            margin: 15px;
+        .diyas {
+            font-size: 28px;
+            margin-top: 20px;
         }
 
         button {
-            padding: 12px 25px;
-            font-size: 18px;
-            border: none;
-            border-radius: 25px;
-            background-color: #FFD700;
+            padding: 10px 20px;
+            font-size: 16px;
+            background: gold;
             color: black;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
-        button:hover {
-            background-color: #ff9900;
-        }
-
-        #hiddenMessage {
+        #secondMessage {
+            margin-top: 15px;
+            font-size: 16px;
             display: none;
-            margin-top: 25px;
-            font-size: 22px;
-            color: #00ffcc;
-            font-weight: bold;
         }
 
-        .footer {
-            margin-top: 40px;
-            font-size: 18px;
-            color: #ccc;
+        /* Falling flowers */
+        .flower {
+            position: absolute;
+            top: -40px;
+            font-size: 20px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <h1>🕉️ Happy Mahashivratri 🕉️</h1>
+<div class="card">
 
-    <div class="shiv-text">
-        ✨ Om Namah Shivaya ✨
+    <h1>🔱 Happy Mahashivratri 🔱</h1>
+
+    <div class="temple">🛕 🛕 🛕</div>
+
+    <p>May Lord Shiva bless you with peace and strength.</p>
+
+    <button onclick="showMessage()">Click to Take Darshan</button>
+
+    <div id="secondMessage">
+        🌙 On this sacred night, may Mahadev remove all obstacles  
+        and fill your life with divine blessings. 🔱✨
     </div>
 
-    <div class="box">
-        <p>May Mahadev bless you with strength, wisdom, and peace.</p>
-        <p>May Lord Shiva remove all obstacles from your life.</p>
-        <p>May your heart be filled with devotion and positivity.</p>
-        <p>Har Har Mahadev! 🔱</p>
+    <div class="diyas">🪔 🪔 🪔 🪔 🪔</div>
 
-        <button onclick="showMessage()">Click for Special Blessing</button>
+</div>
 
-        <div id="hiddenMessage">
-            🌙 May Bholenath protect you always and guide your path with divine light. 🕉️
-        </div>
-    </div>
+<script>
+    function showMessage() {
+        document.getElementById("secondMessage").style.display = "block";
+    }
 
-    <div class="footer">
-        Wishing you and your family a blessed Mahashivratri 🌙
-    </div>
+    function createFlower() {
+        const flower = document.createElement("div");
+        flower.classList.add("flower");
+        flower.innerHTML = "🌸";
+        flower.style.left = Math.random() * window.innerWidth + "px";
+        flower.style.animationDuration = (3 + Math.random() * 5) + "s";
+        document.body.appendChild(flower);
 
-    <script>
-        function showMessage() {
-            document.getElementById("hiddenMessage").style.display = "block";
-        }
-    </script>
+        setTimeout(() => {
+            flower.remove();
+        }, 8000);
+    }
+
+    setInterval(createFlower, 600);
+</script>
 
 </body>
-  </html>
+</html>
